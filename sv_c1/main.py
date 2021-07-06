@@ -5,15 +5,14 @@ from celery import Celery
 from celery.signals import celeryd_init, worker_shutting_down
 from celery.utils.dispatch import Signal
 
-CELERY_BROKER='redis://10.10.70.140:6379/0'
-CELERY_RESULT='redis://10.10.70.140:6379/0'
+CELERY_BROKER='redis://localhost:6379/0'
+CELERY_RESULT='redis://localhost:6379/1'
 
 from lib.event.event_listener import start as listener_start
 from lib.event.event_listener import terminate as listener_end
 
 signals=['SIGTERM', 'SIGINT', 'SIGSEGV']
 
-print('-- start celery --')
 app = Celery('tasks', broker=CELERY_BROKER, backend=CELERY_RESULT)
 
 
