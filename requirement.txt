@@ -1,0 +1,4 @@
+click>=7.1.2
+patch
+pytest
+attrs==19.1.0
