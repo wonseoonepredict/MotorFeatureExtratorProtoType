@@ -13,13 +13,14 @@ class EventListener:
         self.go = True
         self.task_process = None
         self.q = None
-        self.handle = None
+        self.handler = None
 
     def con2redis(self):
         self.q = RedisQueue('my-queue', host='localhost', port=6379, db=0)
 
     def setredis(self, redis):
         self.q = redis
+
 
     def terminate(self):
         print('queue_listener will be terminated.')
@@ -42,6 +43,8 @@ class EventListener:
                 msg_json = json.loads(msg.decode('utf-8'))
                 if self.task_process is not None:
                     self.task_process(msg_json)
+            else:
+                print('msg is empty...')
         print('queue_listener is terminated.')
 
 
