@@ -1,7 +1,7 @@
 runc1:
 	export PYTHONPATH=${PWD}:${PYTHONPATH};celery -A sv_c1.main worker
 
-test_runc1:
+test_sv:
 	export PYTHONPATH=${PWD}:${PYTHONPATH};pytest test
 
 runc2:
